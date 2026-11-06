@@ -32,8 +32,9 @@
 3. Удали временную папку.
 4. Проверь, что в ~/.claude/skills/ есть brief-product/SKILL.md, brief-product/ecosystem.md,
    brief-product/template.md, brief-review/SKILL.md и brief-meeting/SKILL.md.
-5. Проверь, подключён ли у меня Atlassian MCP (Jira + Confluence). Если нет — коротко объясни,
-   как его подключить (раздел «Настройка» в skills/brief-product/SKILL.md).
+5. Проверь, подключён ли у меня Atlassian MCP (команда `claude mcp list`). Если нет — спроси
+   разрешения и выполни: claude mcp add --transport http -s user atlassian https://mcp.atlassian.com/v2/mcp
+   Затем скажи мне ввести /mcp → atlassian и войти в Atlassian через браузер.
 6. В конце перечисли команды /brief-product, /brief-review, /brief-meeting и одной строкой —
    что делает каждая. Скиллы станут доступны в новой сессии Claude Code.
 ```
@@ -49,6 +50,20 @@
 
 Эти команды вводятся в Claude Code руками: Claude не может запустить `/plugin` сам. Используй один из двух вариантов, иначе скиллы будут в двух экземплярах.
 
-## Настройка
+## Обязательно: подключить Atlassian MCP
 
-Каждой роли нужен подключённый **Atlassian MCP** (Jira + Confluence): через него скиллы читают бриф и ревью других ролей. Подробности — в разделе «Настройка» файла [skills/brief-product/SKILL.md](skills/brief-product/SKILL.md).
+Без него скиллы не видят Jira: не прочитают бриф и ревью других ролей и не создадут задачи. Подключает **каждый**, кто пользуется скиллами (продукт, дизайн, бекенд, фронт, мобилка, QA), один раз.
+
+**Claude Code**
+1. В терминале:
+   ```
+   claude mcp add --transport http -s user atlassian https://mcp.atlassian.com/v2/mcp
+   ```
+2. В Claude Code: `/mcp` → `atlassian` → войти через браузер под своим аккаунтом Atlassian.
+3. Проверка: попросить «найди задачу DPP-<номер> в Jira».
+
+**claude.ai (веб / десктоп):** Settings → Connectors → Atlassian → Connect.
+
+AI видит и меняет только то, что доступно тебе самому в Jira и Confluence. Без MCP скиллы работают в ручном режиме: бриф и ревью вставляются текстом, результат заводится в Jira руками.
+
+Product owner дополнительно указывает проект Jira (и, если нужно, пространство Confluence) — раздел «Куда публиковать» в [skills/brief-product/SKILL.md](skills/brief-product/SKILL.md).
