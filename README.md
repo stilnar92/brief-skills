@@ -22,10 +22,32 @@
 
 ## Установка (Claude Code)
 
+### Вариант 1. Промт — скопируй и вставь в Claude Code
+
+```
+Установи скиллы brief-* из репозитория https://github.com/stilnar92/brief-skills:
+1. Склонируй репозиторий во временную папку.
+2. Скопируй папки skills/brief-product, skills/brief-review и skills/brief-meeting
+   в ~/.claude/skills/ (если такие папки уже есть — покажи разницу и спроси, перезаписать ли).
+3. Удали временную папку.
+4. Проверь, что в ~/.claude/skills/ есть brief-product/SKILL.md, brief-product/ecosystem.md,
+   brief-product/template.md, brief-review/SKILL.md и brief-meeting/SKILL.md.
+5. Проверь, подключён ли у меня Atlassian MCP (Jira + Confluence). Если нет — коротко объясни,
+   как его подключить (раздел «Настройка» в skills/brief-product/SKILL.md).
+6. В конце перечисли команды /brief-product, /brief-review, /brief-meeting и одной строкой —
+   что делает каждая. Скиллы станут доступны в новой сессии Claude Code.
+```
+
+Обновление — тот же промт: скиллы перезапишутся последней версией.
+
+### Вариант 2. Как плагин (вручную)
+
 ```
 /plugin marketplace add stilnar92/brief-skills
 /plugin install brief-skills@brief-skills
 ```
+
+Эти команды вводятся в Claude Code руками: Claude не может запустить `/plugin` сам. Используй один из двух вариантов, иначе скиллы будут в двух экземплярах.
 
 ## Настройка
 
