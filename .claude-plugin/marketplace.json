@@ -5,7 +5,7 @@
     {
       "name": "brief-skills",
       "source": "./",
-      "description": "Бриф задачи до старта разработки: brief-product, brief-review, brief-meeting, brief-dev, brief-handoff, brief-qa"
+      "description": "Бриф задачи до старта разработки: brief-product, brief-review, brief-meeting"
     }
   ]
 }
