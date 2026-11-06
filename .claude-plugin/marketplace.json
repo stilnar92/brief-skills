@@ -1,0 +1,11 @@
+{
+  "name": "brief-skills",
+  "owner": { "name": "stilnar92" },
+  "plugins": [
+    {
+      "name": "brief-skills",
+      "source": "./",
+      "description": "Бриф задачи до старта разработки: brief-product, brief-review, brief-meeting, brief-dev, brief-qa"
+    }
+  ]
+}
